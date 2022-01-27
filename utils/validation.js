@@ -34,4 +34,8 @@ const Loginschema = Joi.object({
   password: Joi.string().required(),
 })
 
-export { Registerschema, Loginschema }
+const Resetschema = Joi.object({
+  email,
+})
+
+export { Registerschema, Loginschema, Resetschema }

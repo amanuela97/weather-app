@@ -9,5 +9,8 @@ module.exports = {
       'messagingSenderId': '748181337346',
       'appId': '1:748181337346:web:cc5a76e96e0fbd872c3e1b'
     }
-  }
+  },
+  images: {
+    domains: ['tailwindui.com'],
+  },
 }

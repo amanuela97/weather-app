@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react'
-import { auth } from './firebaseClient'
-import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { auth, provider } from './firebaseClient'
+import { onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  signInWithPopup,
+  GoogleAuthProvider,
+  sendPasswordResetEmail
+} from 'firebase/auth'
 
 const formatAuthUser = (user) => ({
   uid: user.uid,
@@ -26,7 +33,7 @@ export default function useFirebaseAuth() {
 
   const clear = () => {
     setAuthUser(null)
-    setLoading(true)
+    setLoading(false)
   }
 
   const SignInWithEmailAndPassword = async (email, password) => {
@@ -35,6 +42,31 @@ export default function useFirebaseAuth() {
 
   const CreateUserWithEmailAndPassword = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
+  }
+
+  const SignInWithGoogle = async () => {
+    signInWithPopup(auth, provider).then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result)
+      const token = credential.accessToken
+      // The signed-in user info.
+      const user = result.user
+      console.log({ credential, token, user })
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code
+      const errorMessage = error.message
+      // The email of the user's account used.
+      const email = error.email
+      // The AuthCredential type that was used.
+      const credential = provider.credentialFromError(error)
+      console.log({ credential, error, errorCode, errorMessage })
+
+    })
+  }
+
+  const SendPasswordResetEmail = async (email) => {
+    return sendPasswordResetEmail(auth, email)
   }
 
   const SignOut = async () => {
@@ -66,6 +98,12 @@ export default function useFirebaseAuth() {
     return message
   }
 
+  const clearError = async (setError) => {
+    setTimeout(() => {
+      setError(null)
+    },5000)
+  }
+
   // listen for Firebase state change
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, authStateChanged)
@@ -77,7 +115,10 @@ export default function useFirebaseAuth() {
     loading,
     SignInWithEmailAndPassword,
     CreateUserWithEmailAndPassword,
+    SignInWithGoogle,
+    SendPasswordResetEmail,
     SignOut,
-    handleError
+    handleError,
+    clearError
   }
 }
