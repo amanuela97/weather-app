@@ -6,8 +6,7 @@ import { withPublic } from '../utils/withAuth'
 import Form from '../components/Form'
 import InputField from '../components/InputField'
 import appLogog from '../public/appLogo.png'
-import PropTypes from 'prop-types'
-import { async } from '@firebase/util'
+
 
 
 
@@ -24,7 +23,7 @@ const Forgotpass = () => {
     event.preventDefault()
 
     // validate input
-    const { error } =  Resetschema.validate({ email })
+    const { error } =  email.validate({ email })
 
     //set validation error and return
     if(error) {
@@ -37,23 +36,19 @@ const Forgotpass = () => {
 
     SendPasswordResetEmail(email).then(() => {
       // Password reset email sent!
-      console.log('reset successfully sent')
       setMessage(  {
         type: 'success',
         message: 'reset message successfully sent to email'
       })
     }).catch( async (error) => {
-      const errorCode = error.code
-      const errorMessage = error.message
-      // handle error
-      const customError = handleError(errorCode)
+      const errorMessage =  handleError(error)
       setMessage(  {
         type: 'error',
-        message: customError ? customError : errorMessage
+        message: errorMessage
       })
-      //clear error afte 5 sec
-      clearError(setMessage)
     })
+    //clear error afte 5 sec
+    clearError(setMessage)
   }
 
   return (
@@ -62,32 +57,34 @@ const Forgotpass = () => {
         <title>Login</title>
         <meta name="description" content="Login page" />
       </Head>
-      <Form
-        title={'Forgot your password?'}
-        logo={appLogog}
-        submitTitle={'Send Password Reset Email'}
-        onSubmit={onSubmit}
-        forgotPass={false}
-      >
-        <InputField
-          id="email-address"
-          name="email"
-          type="email"
-          autoComplete="email"
-          required={true}
-          placeholder="Email address"
-          htmlFor="email-address"
-          label='Email address'
-          value={email}
-          onChange={({ target }) => setEmail(target.value.trim())}
-        />
-        <>
-          {message &&
-          <pre style={{ color: message.type === 'error' ? 'red' : 'green' }}>
+      <div className='h-screen'>
+        <Form
+          title={'Forgot your password?'}
+          logo={appLogog}
+          submitTitle={'Send Password Reset Email'}
+          onSubmit={onSubmit}
+          forgotPass={false}
+        >
+          <InputField
+            id="email-address"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required={true}
+            placeholder="Email address"
+            htmlFor="email-address"
+            label='Email address'
+            value={email}
+            onChange={({ target }) => setEmail(target.value.trim())}
+          />
+          <>
+            {message &&
+          <pre className={message.type === 'error' ? 'text-red-600 tx-sm w-full break-words overflow-hidden justify-center ' : 'text-green-600 tx-sm w-full break-words overflow-hidden justify-center ' }>
             {message.message}
           </pre>}
-        </>
-      </Form>
+          </>
+        </Form>
+      </div>
     </div>
   )
 }

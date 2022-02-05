@@ -11,6 +11,6 @@ module.exports = {
     }
   },
   images: {
-    domains: ['tailwindui.com'],
+    domains: ['tailwindui.com', 'images.unsplash.com', 'lh3.googleusercontent.com', 'firebasestorage.googleapis.com'],
   },
 }

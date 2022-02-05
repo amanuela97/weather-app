@@ -17,7 +17,7 @@ const Form = ({ title,subtitle,href, hrefName, logo , onSubmit, submitTitle, goo
         <body class="h-full">
         ```
       */}
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
+      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 
         {/*form header*/}
         <div className="max-w-md w-full space-y-8 ">

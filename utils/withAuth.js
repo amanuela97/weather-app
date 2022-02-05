@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import { useAuth } from '../utils/AuthUserContext'
 import Spinner from '../components/Spinner'
 
-
 export function withProtected(Component) {
   return function WithProtected(props) {
     const { authUser, loading } = useAuth()

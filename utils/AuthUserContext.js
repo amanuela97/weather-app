@@ -4,6 +4,8 @@ import useFirebaseAuth from './useFirebaseAuth'
 const authUserContext = createContext({
   authUser: null,
   loading: true,
+  defaultPhotoURL: '',
+  uploadProgress: 0,
   SignInWithEmailAndPassword: async () => {},
   CreateUserWithEmailAndPassword: async () => {},
   SignInWithGoogle: async () => {},
@@ -11,6 +13,13 @@ const authUserContext = createContext({
   SignOut: async () => {},
   handleError: async () => {},
   clearError: async () => {},
+  UpdateProfile: async () => {},
+  ReauthenticateWithCredential: async () => {},
+  ReauthenticateWithPopup: async () => {},
+  authStateChanged: async () => {},
+  DeleteUser: async () => {},
+  UpdatePassword: async () => {},
+  UploadFile: async () => {},
 })
 
 export function AuthUserProvider({ children }) {

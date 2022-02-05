@@ -4,8 +4,8 @@ import {  MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useAuth } from '../utils/AuthUserContext'
-//import appLogo from '../public/appLogo.png'
-//import Image from 'next/image'
+import Image from 'next/image'
+import checkImageHost from '../utils/checkImageHost'
 
 const CustomButton = ({ text, action }) => {
   const router = useRouter()
@@ -25,17 +25,21 @@ const CustomButton = ({ text, action }) => {
 export default function Nav() {
   const router = useRouter()
   const path = router.pathname
-  const { authUser, loading, SignOut } = useAuth()
+  const { authUser, SignOut } = useAuth()
 
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
 
-  const navigation = [
+  const tabs = [
     { name: 'Home', href: '/', current:  path === '/' },
     { name: 'Profile', href: '/profile', current: path === '/profile' },
+    { name: 'Settings', href: '/settings', current: path === '/settings' }
   ]
+
+  const navigation = authUser ? tabs : tabs.filter((_, index) => index === 0)
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -54,15 +58,6 @@ export default function Nav() {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                {/* <div className="flex-shrink-0 flex items-center">
-                  <Image
-                    className="hidden lg:block h-8 w-auto"
-                    src={appLogo}
-                    alt="Workflow"
-                    height={22}
-                    width={100}
-                  />
-                </div> */}
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
@@ -84,7 +79,6 @@ export default function Nav() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
                 {/* login/logout */}
                 <Menu as="div" className="ml-3 relative">
                   <div>
@@ -93,6 +87,14 @@ export default function Nav() {
                     }
                   </div>
                 </Menu>
+                {authUser?.photoURL &&
+                <div className='ml-10'>
+                  {checkImageHost(authUser.photoURL) ?
+                    <Image className='rounded-full' src={authUser.photoURL} alt="avatar" width={40} height={40}/> :
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img className='h-10 w-10 rounded-full' src={authUser.photoURL} alt="avatar"/>
+                  }
+                </div>}
               </div>
             </div>
           </div>

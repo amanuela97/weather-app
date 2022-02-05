@@ -4,9 +4,9 @@ import propTypes from 'prop-types'
 const InputField = (props) => {
   const { label, htmlFor, ...otherProps } = props
   return (
-    <div className="rounded-md shadow-sm -space-y-px">
+    <div className="rounded-md shadow-sm -space-y-px mb-2">
       <div>
-        <label htmlFor={htmlFor} className="sr-only">
+        <label htmlFor={htmlFor} >
           {label}
         </label>
         <input

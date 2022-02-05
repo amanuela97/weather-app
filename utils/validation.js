@@ -1,11 +1,10 @@
 import Joi from 'joi'
 
-/*const username = Joi
+const displayName = Joi
   .string()
-  .alphanum()
   .min(4)
   .max(20)
-  .required()*/
+  .required()
 
 const password = Joi.string()
   .min(5)
@@ -38,4 +37,13 @@ const Resetschema = Joi.object({
   email,
 })
 
-export { Registerschema, Loginschema, Resetschema }
+
+const UpdateProfileschema = Joi.object({
+  displayName,
+  email
+})
+
+
+
+
+export { Registerschema, Loginschema, UpdateProfileschema, password, email }
