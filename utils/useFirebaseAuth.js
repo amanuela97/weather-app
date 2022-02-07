@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { auth, provider, storage } from './firebaseClient'
+import { auth, provider, storage, db } from './firebaseClient'
 import { onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -16,7 +16,7 @@ import { onAuthStateChanged,
   updatePassword,
 } from 'firebase/auth'
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
-import { async } from '@firebase/util'
+import { doc, setDoc, getDoc } from 'firebase/firestore'
 
 const formatAuthUser = (user, providerId) => ({
   uid: user.uid,
@@ -40,13 +40,13 @@ export default function useFirebaseAuth() {
 
     setLoading(true)
     const [providerId] = authState.providerData
-    console.log('authState', authState)
     let formattedUser = formatAuthUser(authState, providerId)
     setAuthUser(formattedUser)
     setLoading(false)
   }
 
   const clear = () => {
+    localStorage.clear()
     setAuthUser(null)
     setLoading(false)
   }
@@ -66,7 +66,7 @@ export default function useFirebaseAuth() {
       const token = credential.accessToken
       // The signed-in user info.
       const user = result.user
-      console.log({ credential, token, user, authUser })
+      //console.log({ credential, token, user, authUser })
     }).catch((error) => {
       // Handle Errors here.
       const errorMessage = handleError(error)
@@ -74,7 +74,7 @@ export default function useFirebaseAuth() {
       const email = error.email
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error)
-      console.log({ error, email, errorMessage, credential })
+      //console.log({ error, email, errorMessage, credential })
 
     })
   }
@@ -230,6 +230,39 @@ export default function useFirebaseAuth() {
     })
   }
 
+  const AddAccountInfo = async (frequency, location , status) => {
+    const user = auth.currentUser
+    const data = {
+      frequency: frequency,
+      location: location,
+      status: status,
+      email: user.email,
+      name: user.displayName,
+    }
+    try {
+      const accountRef = doc(db, 'Accounts', user.uid)
+      await setDoc(accountRef, data , { merge: true })
+      return 'success'
+    } catch (error) {
+      const errorMessage = handleError(error)
+      console.log(errorMessage)
+      return errorMessage
+    }
+  }
+
+  const GetAccountInfo = async () => {
+    const user = auth.currentUser
+    const docRef = doc(db, 'Accounts', user.uid)
+    const docSnap = await getDoc(docRef)
+
+    if (docSnap.exists()) {
+      return docSnap.data()
+    } else {
+      console.log('No such document!')
+      return false
+    }
+  }
+
   // listen for Firebase state change
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, authStateChanged)
@@ -254,6 +287,8 @@ export default function useFirebaseAuth() {
     authStateChanged,
     DeleteUser,
     UpdatePassword,
-    UploadFile
+    UploadFile,
+    AddAccountInfo,
+    GetAccountInfo,
   }
 }

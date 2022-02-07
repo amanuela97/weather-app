@@ -245,7 +245,7 @@ const ProfileForm = () => {
               required={true}
               placeholder="new password"
               htmlFor="password"
-              label="new Password"
+              label="New password"
               value={newPassword}
               onChange={({ target }) => setNewPassword(target.value.trim())}
             />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import SideNav from '../components/SideNav'
 import ProfileForm from '../components/ProfileForm'
+import AccountForm from '../components/AccountForm'
 import { withProtected } from '../utils/withAuth'
 
 
@@ -21,6 +22,7 @@ const Settings = () => {
         setSelected={setSelected}
       />
       {(selected === 'profile') && <ProfileForm />}
+      {(selected === 'account') && <AccountForm />}
     </div>
   )
 }

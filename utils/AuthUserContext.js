@@ -20,6 +20,8 @@ const authUserContext = createContext({
   DeleteUser: async () => {},
   UpdatePassword: async () => {},
   UploadFile: async () => {},
+  AddAccountInfo: async () => {},
+  GetAccountInfo: async () => {},
 })
 
 export function AuthUserProvider({ children }) {
