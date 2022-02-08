@@ -31,7 +31,7 @@ const Home = () => {
               How it works:
             </h3>
             <div className='list-decimal text-center list-outside mb-12'>
-              <li className='text-indigo-500 mb-2'>got to your account settings</li>
+              <li className='text-indigo-500 mb-2'>go to your account settings</li>
               <li className='text-indigo-500'>set how often you want to recieve weather updates by changing the frequency to one of two options</li>
               <div className='list-disc list-outside mb-2'>
                 <li className='text-indigo-500'><span className='font-bold'>daily:</span>  receive updates daily At 12:00 AM</li>
