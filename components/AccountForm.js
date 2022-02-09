@@ -10,7 +10,7 @@ const AccountForm = () => {
   const myRef = useRef(null)
   const [enabled, setEnabled] = useState(false)
   const [location, setLocation] = useState('')
-  const [frequency, setFrequency] = useState('Monthly')
+  const [frequency, setFrequency] = useState('')
   const [disable, setDisable] = useState(false)
   const [message, setMessage] = useState({
     type: null,

@@ -34,8 +34,8 @@ const Home = () => {
               <li className='text-indigo-500 mb-2'>go to your account settings</li>
               <li className='text-indigo-500'>set how often you want to recieve weather updates by changing the frequency to one of two options</li>
               <div className='list-disc list-outside mb-2'>
-                <li className='text-indigo-500'><span className='font-bold'>daily:</span>  receive updates daily At 12:00 AM</li>
-                <li className='text-indigo-500'><span className='font-bold'>monthly:</span> receive updates At 12:00 AM, on day 1 of the month</li>
+                <li className='text-indigo-500'><span className='font-bold'>daily:</span>  receive updates daily</li>
+                <li className='text-indigo-500'><span className='font-bold'>monthly:</span> receive updates on day 1 of the month</li>
               </div>
               <li className='text-indigo-500 mb-2'>choose the location for which you want to receive weather updates</li>
               <li className='text-indigo-500 mb-2'>toggle the status <span className='font-bold'>ON</span> if you want to start receiving updates via email and <span className='font-bold'>OFF</span> if you do not</li>
