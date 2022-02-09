@@ -78,8 +78,7 @@ const AccountForm = () => {
       }
     }
     return fetchData()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [GetAccountInfo])
 
 
   return (

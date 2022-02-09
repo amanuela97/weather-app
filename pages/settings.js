@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import SideNav from '../components/SideNav'
 import ProfileForm from '../components/ProfileForm'
 import AccountForm from '../components/AccountForm'
@@ -11,8 +11,10 @@ const Settings = () => {
   const [selected, setSelected] = useState('profile')
 
   useEffect(() => {
-    setSelected(localStorage.getItem('selectedSideNav') ? localStorage.getItem('selectedSideNav') : 'profile')
-    return setSelected
+    async function changeTab(){
+      setSelected(localStorage.getItem('selectedSideNav') ? localStorage.getItem('selectedSideNav') : 'profile')
+    }
+    return changeTab()
   }, [])
 
   return (
