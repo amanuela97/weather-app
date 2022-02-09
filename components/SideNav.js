@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import propTypes from 'prop-types'
 import { useAuth } from '../utils/AuthUserContext'
-import { useEffect } from 'react/cjs/react.development'
+import { useEffect } from 'react'
 
 
 
