@@ -5,7 +5,6 @@ import { Loginschema } from '../utils/validation'
 import { withPublic } from '../utils/withAuth'
 import Form from '../components/Form'
 import InputField from '../components/InputField'
-import appLogog from '../public/appLogo.png'
 
 
 function Login() {
@@ -53,8 +52,7 @@ function Login() {
           subtitle={'Dont have an account?'}
           href={'/register'}
           hrefName={'Sign Up'}
-          //logo={'https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg'}
-          logo={appLogog}
+          logo={'/appLogo.png'}
           submitTitle={'Sign In'}
           onSubmit={onSubmit}
           googleSignIn={SignInWithGoogle}

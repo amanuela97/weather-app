@@ -4,8 +4,6 @@ import {  MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useAuth } from '../utils/AuthUserContext'
-import Image from 'next/image'
-import checkImageHost from '../utils/checkImageHost'
 
 const CustomButton = ({ text, action }) => {
   const router = useRouter()
@@ -89,8 +87,7 @@ export default function Nav() {
                 </Menu>
                 {authUser?.photoURL &&
                 <div className='ml-10'>
-                  {checkImageHost(authUser.photoURL) ?
-                    <Image className='rounded-full' src={authUser.photoURL} alt="avatar" width={40} height={40}/> :
+                  {authUser.photoURL &&
                     // eslint-disable-next-line @next/next/no-img-element
                     <img className='h-10 w-10 rounded-full' src={authUser.photoURL} alt="avatar"/>
                   }

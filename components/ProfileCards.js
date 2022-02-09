@@ -1,15 +1,12 @@
 import React from 'react'
 import propTypes from 'prop-types'
-import checkImageHost from '../utils/checkImageHost'
-import Image from 'next/image'
 import Link from 'next/link'
 
 const ProfileCards = ({ displayName, email, photoURL }) => {
   return (
     <>
       <div className='bg-white rounded-3xl border shadow-lg p-10 max-w-xs'>
-        {checkImageHost(photoURL) ?
-          <Image className='object-cover object-center' src={photoURL} alt="avatar" width={224} height={224}/> :
+        {photoURL &&
           // eslint-disable-next-line @next/next/no-img-element
           <img className=' w-56 h-56 object-cover object-center' src={photoURL} alt="avatar"/>
         }

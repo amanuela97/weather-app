@@ -1,6 +1,4 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import checkImageHost from '../utils/checkImageHost'
 import propTypes from 'prop-types'
 import { useAuth } from '../utils/AuthUserContext'
 import { useEffect } from 'react/cjs/react.development'
@@ -24,8 +22,7 @@ const SideNav = ({ selected, setSelected  }) => {
   return (
     <div className="md:h-screen p-3 space-y-2 md:w-1/5  bg-gray-200 text-gray-800 w-full h-auto relative" >
       <div className="md:flex items-center p-2 space-x-4 hidden">
-        {checkImageHost(photoURL) ?
-          <Image className='rounded-full' src={photoURL} alt="avatar" width={48} height={48}/> :
+        {photoURL &&
           // eslint-disable-next-line @next/next/no-img-element
           <img className='w-12 h-12 rounded-full' src={photoURL} alt="avatar"/>
         }
@@ -56,14 +53,6 @@ const SideNav = ({ selected, setSelected  }) => {
               <span>Account</span>
             </button>
           </li>
-          {/*<li className={ selected === 'theme' ? style : ''}>
-            <button onClick={() => setSelectedTab('theme')} className="flex items-center p-2 space-x-3 rounded-md">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-              </svg>
-              <span>Theme</span>
-            </button>
-          </li> */}
         </ul>
       </div>
     </div>

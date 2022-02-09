@@ -1,7 +1,6 @@
 import { LockClosedIcon } from '@heroicons/react/solid'
 import { FaGoogle } from 'react-icons/fa'
 import propTypes from 'prop-types'
-import Image from 'next/image'
 import Link from 'next/link'
 
 
@@ -22,13 +21,13 @@ const Form = ({ title,subtitle,href, hrefName, logo , onSubmit, submitTitle, goo
         {/*form header*/}
         <div className="max-w-md w-full space-y-8 ">
           <div className='grid place-items-center'>
-            {logo && <Image
-              className="mx-auto h-12 w-au "
-              src={logo}
-              alt="Workflow"
-              height={76}
-              width={154}
-            />
+
+            {logo && // eslint-disable-next-line @next/next/no-img-element
+             <img
+               className="mx-auto h-12"
+               src={logo}
+               alt="Workflow"
+             />
             }
             {title && <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">{title}</h2>}
             { subtitle && <p className="mt-2 text-center text-sm text-gray-600">
@@ -93,7 +92,7 @@ Form.propTypes = {
   subtitle: propTypes.string,
   href: propTypes.string,
   hrefName: propTypes.string,
-  logo: propTypes.object || propTypes.string,
+  logo: propTypes.string,
   submitTitle: propTypes.string.isRequired,
   onSubmit: propTypes.func.isRequired,
   googleSignIn: propTypes.func,

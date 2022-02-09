@@ -5,7 +5,6 @@ import { Registerschema } from '../utils/validation'
 import { withPublic } from '../utils/withAuth'
 import Form from '../components/Form'
 import InputField from '../components/InputField'
-import appLogog from '../public/appLogo.png'
 
 const Register = () => {
   const [email, setEmail] = useState('')
@@ -55,7 +54,7 @@ const Register = () => {
           subtitle={'Already have an account?'}
           href={'/login'}
           hrefName={'Sign In'}
-          logo={appLogog}
+          logo={'/appLogo.png'}
           submitTitle={'Sign Up'}
           onSubmit={onSubmit}
           googleSignIn={SignInWithGoogle}

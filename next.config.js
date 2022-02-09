@@ -1,14 +1,9 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    NEXT_PUBLIC_FIREBASE_CONFIG: {
-      'apiKey': 'AIzaSyD3i5Ny6PLGTw-tooZGbcOtoAG6d3GoBNk',
-      'authDomain': 'weather-app-76d35.firebaseapp.com',
-      'projectId': 'weather-app-76d35',
-      'storageBucket': 'weather-app-76d35.appspot.com',
-      'messagingSenderId': '748181337346',
-      'appId': '1:748181337346:web:cc5a76e96e0fbd872c3e1b'
-    }
+    NEXT_PUBLIC_FIREBASE_CONFIG: JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_CONFIG),
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    NEXT_PUBLIC_WEATHER_API_KEY: process.env.NEXT_PUBLIC_WEATHER_API_KEY,
   },
   images: {
     domains: ['tailwindui.com', 'images.unsplash.com', 'lh3.googleusercontent.com', 'firebasestorage.googleapis.com'],

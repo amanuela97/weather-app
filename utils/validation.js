@@ -33,10 +33,6 @@ const Loginschema = Joi.object({
   password: Joi.string().required(),
 })
 
-const Resetschema = Joi.object({
-  email,
-})
-
 
 const UpdateProfileschema = Joi.object({
   displayName,
