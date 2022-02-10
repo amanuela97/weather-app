@@ -11,7 +11,6 @@ const AccountForm = () => {
   const [enabled, setEnabled] = useState(false)
   const [location, setLocation] = useState('')
   const [frequency, setFrequency] = useState('')
-  const [disable, setDisable] = useState(false)
   const [message, setMessage] = useState({
     type: null,
     message: null,
@@ -19,7 +18,6 @@ const AccountForm = () => {
 
   const submit = async (event) => {
     event.preventDefault()
-    setDisable(true)
     if(!location || !myRef.current.getMyState()) {
       console.log('here', myRef.current.getMyState())
       setMessage({ type: 'error', message: 'Can not save with empty fields' })
@@ -38,9 +36,7 @@ const AccountForm = () => {
         setMessage({ type: 'error', message: 'failed to update account :(' })
         clearError(setMessage)
       }
-      setDisable(false)
     }else {
-      setDisable(false)
       setMessage({ type: 'error', message: 'weather data for this location is not available, pick another location' })
       clearError(setMessage)
     }
@@ -75,6 +71,7 @@ const AccountForm = () => {
         setEnabled(response.status)
         setLocation(response.location)
         setFrequency(response.frequency)
+        myRef.current
       }
     }
     return fetchData()
@@ -92,7 +89,7 @@ const AccountForm = () => {
             Pick your city, and frequency to receive regular weather updates, and make sure to save your changes.
         </p>
         <hr className="my-6 dark:border-gray-600" />
-        <form onSubmit={submit}>
+        <div>
           <div>
             <label htmlFor="frequency">frequency:</label>
             <SelectMenu options={['Daily', 'Monthly']} defaultvalue={frequency} ref={myRef}/>
@@ -134,12 +131,11 @@ const AccountForm = () => {
             </div>
           </div>
           <button
-            disabled={disable}
-            type='submit'
+            onClick={submit}
             className="inline-block px-6 py-2 mt-4 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
             save
           </button>
-        </form>
+        </div>
       </div>
     </div>
   )

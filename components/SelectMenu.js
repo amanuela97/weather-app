@@ -10,7 +10,10 @@ const SelectMenu = React.forwardRef(( { options, defaultvalue }, ref) => {
 
 
   useEffect(() => {
-
+    async function changeValue(){
+      setSelected(defaultvalue)
+    }
+    return changeValue()
   }, [defaultvalue])
   return (
     <div className="flex justify-center">
