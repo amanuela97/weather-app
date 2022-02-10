@@ -19,7 +19,6 @@ const AccountForm = () => {
   const submit = async (event) => {
     event.preventDefault()
     if(!location || !myRef.current.getMyState()) {
-      console.log('here', myRef.current.getMyState())
       setMessage({ type: 'error', message: 'Can not save with empty fields' })
       clearError(setMessage)
       return
