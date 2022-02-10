@@ -48,7 +48,7 @@ const Register = () => {
         <title>Register</title>
         <meta name="description" content="Register" />
       </Head>
-      <div className='h-screen'>
+      <div className='h-screen sm:h-full'>
         <Form
           title={'Create your account'}
           subtitle={'Already have an account?'}

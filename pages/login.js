@@ -46,7 +46,7 @@ function Login() {
         <title>Login</title>
         <meta name="description" content="Login page" />
       </Head>
-      <div className='h-screen'>
+      <div className='h-screen sm:h-full'>
         <Form
           title={'Sign in to your account'}
           subtitle={'Dont have an account?'}

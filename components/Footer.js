@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <footer className="text-center text-white bg-gray-500">
+    <footer className="text-white bg-gray-500">
       <div className="container pt-9">
         <div className="flex justify-center mb-9">
           <a href="https://github.com/amanuela97/weather-app" className="text-gray-800">
