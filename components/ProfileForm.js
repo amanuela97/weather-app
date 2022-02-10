@@ -139,8 +139,8 @@ const ProfileForm = () => {
   },[])
 
   return (
-    <div className='flex justify-center md:w-4/5 w-full mt-6 mb-6'>
-      <div className='block rounded-lg bg-gray-100 w-5/6 h-screen md:h-full text-center'>
+    <div className='sm:h-full lg:h-screen flex justify-center md:w-4/5 w-full mt-6  mb-6'>
+      <div className='block rounded-lg bg-gray-100 w-5/6 text-center'>
         <label htmlFor="label" className="block mb-2 text-gray-700 font-medium text-xl mt-6"
         >Photo
         </label>

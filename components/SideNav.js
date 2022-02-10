@@ -20,7 +20,7 @@ const SideNav = ({ selected, setSelected  }) => {
 
 
   return (
-    <div className="md:h-screen p-3 space-y-2 md:w-1/5  bg-gray-200 text-gray-800 w-full h-auto relative" >
+    <div className="p-3 space-y-2 md:w-1/5  bg-gray-200 text-gray-800 w-full h-auto relative" >
       <div className="md:flex items-center p-2 space-x-4 hidden">
         {photoURL &&
           // eslint-disable-next-line @next/next/no-img-element

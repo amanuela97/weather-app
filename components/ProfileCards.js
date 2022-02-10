@@ -5,12 +5,12 @@ import Link from 'next/link'
 const ProfileCards = ({ displayName, email, photoURL }) => {
   return (
     <>
-      <div className='bg-white rounded-3xl border shadow-lg p-10 max-w-xs'>
+      <div className='bg-white rounded-3xl border shadow-lg p-10 max-w-xs my-4'>
         {photoURL &&
           // eslint-disable-next-line @next/next/no-img-element
-          <img className=' w-56 h-56 object-cover object-center' src={photoURL} alt="avatar"/>
+          <img className='w-full h-1/2 object-cover object-center' src={photoURL} alt="avatar"/>
         }
-        <div className='py-4 px-6'>
+        <div className='py-4 px-6 '>
           <h1 className='text-1xl font-semibold text-gray-800'>{displayName}</h1>
           <div className='flex items-center mt-4 text-gray-700'>
             <svg xmlns="http://www.w3.org/2000/svg" className='h-6 w-6 fill-current' viewBox="0 0 20 20" fill="currentColor">

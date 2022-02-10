@@ -6,7 +6,7 @@ import { useAuth } from '../utils/AuthUserContext'
 function Profile() {
   const { authUser } = useAuth()
   return (
-    <div className='flex h-screen justify-center items-center'>
+    <div className='flex justify-center items-center'>
       <ProfileCards
         displayName={authUser?.displayName}
         email={authUser?.email}

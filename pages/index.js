@@ -20,7 +20,7 @@ const Home = () => {
           <Spinner/>
         </div>) :
         (
-          <div className='h-screen mt-14'>
+          <div className='mt-14'>
             <h1 className='mb-8 text-center text-2xl font-bold leading-7 text-indigo-500 sm:text-3xl sm:truncate'>
               Welcome, {authUser.displayName}
             </h1>
