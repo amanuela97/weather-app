@@ -32,7 +32,8 @@
 ## Run locally
 
 1. [Install nvm](https://github.com/nvm-sh/nvm)
-2. Run `nvm install 14`
-3. Run `nvm use 14` to switch to node version
-4. Run `npm  install` to install dependencies
-5. Run `npm run dev` to launch app
+2. Run `nvm install 14`  & `nvm install 17.3.1` 
+3. Run `nvm use 14` to switch between node versions, used in /functions
+4. Run `nvm use 17.3.1` used in the root directory aka project version
+5. Run `npm  install` to install dependencies
+6. Run `npm run dev` to launch app
