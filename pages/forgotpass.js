@@ -1,17 +1,16 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import { useAuth } from '../utils/AuthUserContext'
-import { Resetschema } from '../utils/validation'
+import { email } from '../utils/validation'
 import { withPublic } from '../utils/withAuth'
 import Form from '../components/Form'
 import InputField from '../components/InputField'
-import appLogog from '../public/appLogo.png'
 
 
 
 
 const Forgotpass = () => {
-  const [email, setEmail] = useState('')
+  const [emaill, setEmail] = useState('')
   const [message, setMessage] = useState({
     type: null,
     message: null,
@@ -23,7 +22,8 @@ const Forgotpass = () => {
     event.preventDefault()
 
     // validate input
-    const { error } =  email.validate({ email })
+    console.log( typeof emaill)
+    const { error } = email.validate(emaill)
 
     //set validation error and return
     if(error) {
@@ -31,10 +31,11 @@ const Forgotpass = () => {
         type: 'error',
         message: error.details[0].message
       })
+      clearError(setMessage)
       return
     }
 
-    SendPasswordResetEmail(email).then(() => {
+    SendPasswordResetEmail(emaill).then(() => {
       // Password reset email sent!
       setMessage(  {
         type: 'success',
@@ -60,7 +61,7 @@ const Forgotpass = () => {
       <div className='h-screen'>
         <Form
           title={'Forgot your password?'}
-          logo={appLogog}
+          logo={'/appLogo.png'}
           submitTitle={'Send Password Reset Email'}
           onSubmit={onSubmit}
           forgotPass={false}
@@ -74,7 +75,7 @@ const Forgotpass = () => {
             placeholder="Email address"
             htmlFor="email-address"
             label='Email address'
-            value={email}
+            value={emaill}
             onChange={({ target }) => setEmail(target.value.trim())}
           />
           <>
