@@ -10,7 +10,7 @@ const AccountForm = () => {
   const myRef = useRef(null)
   const [enabled, setEnabled] = useState(false)
   const [location, setLocation] = useState('')
-  const [frequency, setFrequency] = useState('')
+  const [frequency, setFrequency] = useState('Daily')
   const [message, setMessage] = useState({
     type: null,
     message: null,
@@ -70,8 +70,8 @@ const AccountForm = () => {
         setEnabled(response.status)
         setLocation(response.location)
         setFrequency(response.frequency)
-        myRef.current
       }
+      setFrequency('Daily')
     }
     return fetchData()
   }, [GetAccountInfo])

@@ -16,7 +16,7 @@ import { onAuthStateChanged,
   updatePassword,
 } from 'firebase/auth'
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
-import { doc, setDoc, getDoc } from 'firebase/firestore'
+import { doc, setDoc, getDoc, deleteDoc } from 'firebase/firestore'
 
 const formatAuthUser = (user, providerId) => ({
   uid: user.uid,
@@ -189,6 +189,11 @@ export default function useFirebaseAuth() {
   const DeleteUser = async() => {
     const user = auth.currentUser
     try {
+      const docRef = doc(db, 'Accounts', user.uid)
+      const docSnap = await getDoc(docRef)
+      if(docSnap.exists()){
+        await deleteDoc(docRef)
+      }
       await deleteUser(user)
       clear()
     } catch (error) {
