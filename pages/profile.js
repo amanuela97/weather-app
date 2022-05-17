@@ -1,20 +1,18 @@
-import { withProtected } from '../utils/withAuth'
-import ProfileCards from '../components/ProfileCards'
-import { useAuth } from '../utils/AuthUserContext'
-
+import { withProtected } from '../utils/withAuth';
+import ProfileCards from '../components/ProfileCards';
+import { useAuth } from '../utils/AuthUserContext';
 
 function Profile() {
-  const { authUser } = useAuth()
+  const { authUser } = useAuth();
   return (
-    <div className='flex justify-center items-center'>
+    <div className="flex justify-center items-center">
       <ProfileCards
         displayName={authUser?.displayName}
         email={authUser?.email}
         photoURL={authUser?.photoURL}
-
       />
     </div>
-  )
+  );
 }
 
-export default withProtected(Profile)
+export default withProtected(Profile);
