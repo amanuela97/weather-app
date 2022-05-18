@@ -8,7 +8,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/icon.png"></link>
+          <link rel="apple-touch-icon" href="/appLogo.png"></link>
           <meta name="theme-color" content="#fff" />
         </Head>
         <body className="h-full">
